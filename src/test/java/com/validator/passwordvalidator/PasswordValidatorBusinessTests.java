@@ -63,6 +63,14 @@ class PasswordValidatorBusinessTests {
   }
 
   @Test
+  void shouldBeValidWhenPasswordHasRepeatingCharacters() {
+    final String passwordToTest = "Geek@Daev20!";
+    final boolean result = validatorStrategy.pickUpValidator("strong").isValidPassword(passwordToTest);
+
+    Assertions.assertThat(result).isFalse();
+  }
+
+  @Test
   void shouldBeValidWhenValidatorIsWeakAndPasswordIsCorrect() {
     final String passwordToTest = "Gek@Dav20!";
     final boolean result = validatorStrategy.pickUpValidator("weak").isValidPassword(passwordToTest);
