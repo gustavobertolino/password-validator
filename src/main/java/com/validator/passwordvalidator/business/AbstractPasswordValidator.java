@@ -1,4 +1,4 @@
-package com.validator.passwordvalidator;
+package com.validator.passwordvalidator.business;
 
 
 import org.slf4j.Logger;

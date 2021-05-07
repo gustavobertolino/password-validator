@@ -1,4 +1,4 @@
-package com.validator.passwordvalidator;
+package com.validator.passwordvalidator.business;
 
 import org.springframework.stereotype.Service;
 
@@ -7,7 +7,7 @@ import java.util.Map;
 
 @Service
 public class ValidatorStrategy {
-  private final Map<String, ValidatorInterface> mapValidators = new HashMap<>();
+  private final Map<String, AbstractPasswordValidator> mapValidators = new HashMap<>();
 
   public ValidatorStrategy() {
     mapValidators.put("strong", new PasswordValidator());
@@ -18,6 +18,6 @@ public class ValidatorStrategy {
     if (!mapValidators.containsKey(typeValidator)) {
       return new PasswordValidator();
     }
-    return (AbstractPasswordValidator) mapValidators.get(typeValidator);
+    return mapValidators.get(typeValidator);
   }
 }

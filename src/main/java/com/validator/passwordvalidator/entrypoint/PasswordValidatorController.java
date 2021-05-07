@@ -1,5 +1,6 @@
-package com.validator.passwordvalidator;
+package com.validator.passwordvalidator.entrypoint;
 
+import com.validator.passwordvalidator.business.ValidatorStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,9 @@ public class PasswordValidatorController {
 
   @GetMapping("validator/{password}")
   public ResponseEntity<Boolean> validatePassword(@PathVariable String password) {
-    final boolean validationResult = validatorStrategy.pickUpValidator("weakkk").isValidPassword(password);
+    final boolean validationResult = validatorStrategy.pickUpValidator("weak").isValidPassword(password);
 
-    LOGGER.info("Password validation response --> is the password valid?: " + validationResult);
+    LOGGER.info("Password validation response: " + validationResult);
     return new ResponseEntity<>(validationResult, HttpStatus.OK);
   }
 }
