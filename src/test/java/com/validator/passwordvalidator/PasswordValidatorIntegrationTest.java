@@ -27,12 +27,12 @@ public class PasswordValidatorIntegrationTest {
 
   @Test
   public void shouldBeResponseOkAndTrue() {
-    wireMockServer.stubFor(get(urlPathMatching("/validator/([aA-zZ]*)"))
+    wireMockServer.stubFor(get(urlPathMatching("/validator/([aA-zZ]*)/([aA-zZ]*)"))
       .willReturn(aResponse().withStatus(200)));
 
     given().
       when().
-      get("http://localhost:8095/validator/abcABC").
+      get("http://localhost:8095/validator/strong/abcABC").
       then().
       assertThat().statusCode(200);
   }

@@ -17,9 +17,9 @@ public class PasswordValidatorController {
   @Autowired
   ValidatorStrategy validatorStrategy;
 
-  @GetMapping("validator/{password}")
-  public ResponseEntity<Boolean> validatePassword(@PathVariable String password) {
-    final boolean validationResult = validatorStrategy.pickUpValidator("weak").isValidPassword(password);
+  @GetMapping("validator/{typeValidator}/{password}")
+  public ResponseEntity<Boolean> validatePassword(@PathVariable String typeValidator, @PathVariable String password) {
+    final boolean validationResult = validatorStrategy.pickUpValidator(typeValidator).isValidPassword(password);
 
     LOGGER.info("Password validation response: " + validationResult);
     return new ResponseEntity<>(validationResult, HttpStatus.OK);
