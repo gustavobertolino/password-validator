@@ -11,24 +11,14 @@ public abstract class AbstractPasswordValidator {
   private static final Logger LOGGER = LoggerFactory.getLogger(AbstractPasswordValidator.class);
 
   protected boolean matchPasswordValidation(String password, String regex) {
-    // Compile the ReGex
     LOGGER.info("Regex used in mother-class: " + regex);
-    final Pattern pattern = Pattern.compile(regex);
-
-    // If the password is empty
-    // return false
     if (password == null) {
       return false;
     }
 
-    // Pattern class contains matcher() method
-    // to find matching between given password
-    // and regular expression.
-    final Matcher m = pattern.matcher(password);
-
-    // Return if the password
-    // matched the ReGex
-    return m.matches();
+    final Pattern pattern = Pattern.compile(regex);
+    final Matcher matcher = pattern.matcher(password);
+    return matcher.matches();
   }
 
   public boolean isValidPassword(String password) {
