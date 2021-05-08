@@ -41,7 +41,7 @@ This default validator will validate a password obeying the following rules:
 - it doesn't contain any white space.
 - it doesn't contain repeated characters.
 
-So bellow follows an example of API password validation request:
+So below it follows a valid example of API password validation request:
 
 ```
 curl --request GET \
