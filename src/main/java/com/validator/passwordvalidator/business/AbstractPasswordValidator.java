@@ -12,7 +12,7 @@ public abstract class AbstractPasswordValidator {
 
   protected boolean matchPasswordValidation(String password, String regex) {
     LOGGER.info("Regex used in mother-class: " + regex);
-    if (password == null) {
+    if (!password.isBlank() || !regex.isBlank()) {
       return false;
     }
 
