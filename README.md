@@ -27,7 +27,8 @@ The endpoint is provided in this way:
 
 where `typeValidator` is the validator picked up by the client
 and `password` is the password to be validated. The output will be `true`
-in case of being a valid password and `false` otherwise.
+in case of being a valid password and `false` otherwise. Regardless of the input passed in, 
+a non-empty type validator and password should be provided.
 
 A default type validator is given by the code, so if the client provides 
 a missing type validator, the code is prepare to choose a default validator as its fallback.
